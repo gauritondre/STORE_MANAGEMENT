@@ -1,29 +1,28 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import './App.css'
-import Loginform from './Components/Login'
-import Navbar from './Components/Navbar'
-import Registrationform from './Components/Registration'
-import Storeform from "./Components/StoreForm";
+import "./App.css";
+import Loginform from "./Components/Login";
+import Navbar from "./Components/Navbar";
+import Registrationform from "./Components/Registration";
 
 function App() {
-
   return (
     <>
-      {/* <BrowserRouter>
-      <Navbar />
+      <BrowserRouter>
+        <Navbar />
 
-      <div className="pt-15"> 
-      <Routes>
-        <Route path="/register" element={<Registrationform />} />
-        <Route path="/login" element={<Loginform />} />
-      </Routes>
-      </div>
-    </BrowserRouter> */}
+        <div className="pt-15">
+          <Routes>
 
-    <Storeform/>
+            <Route path="/" element={<Navigate to="/register" />} />
+
+            <Route path="/register" element={<Registrationform />} />
+            <Route path="/login" element={<Loginform />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

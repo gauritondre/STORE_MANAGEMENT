@@ -45,8 +45,18 @@ function Registrationform(){
     });
 
     if (response.ok) {
-      alert("Registration Successful");
-    } else {
+  const data = await response.json();
+
+  localStorage.setItem("user", JSON.stringify({
+    name: data.name,
+    email: data.email,
+    role,
+  }));
+
+  alert("Registration Successful");
+  window.location.href = "/"; 
+}
+ else {
       alert("Failed to Register");
     }
   } catch (error) {
@@ -60,7 +70,7 @@ function Registrationform(){
     return(
         <div className="flex flex-col items-center justify-center mt-16 p-6">
              <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full max-w-lg">
-                 <div className="text-2xl text-center font-bold mb-6 mt-4 text-gray-800">
+                 <div className="text-2xl text-center font-bold mb-6 mt-4 text-cyan-800">
                     {role === "user" && <h1> User Registration Form </h1>}
                     {role === "administrator" && <h1> Administrator Registration Form</h1>}
                     {role === "storeOwner" && <h1> Store-Owner Registration Form</h1>}
@@ -182,7 +192,7 @@ function Registrationform(){
                 </div>
 
                 <button onClick={handleSubmit}
-                className="w-30 m-5 bg-blue-600 hover:bg-white text-white hover:text-blue-600 hover:outline-1 font-semibold py-2 rounded-lg transition">
+                className="w-30 m-5 bg-cyan-900 hover:bg-white text-white hover:text-cyan-700 hover:outline-1 font-semibold py-2 rounded-lg transition">
                     Register
                 </button>
             </div>
